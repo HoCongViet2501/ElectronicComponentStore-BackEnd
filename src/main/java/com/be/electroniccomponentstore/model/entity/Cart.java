@@ -24,6 +24,9 @@ public class Cart {
     @Column(name = "total_money")
     private double totalMoney;
     
+    @Column(name = "is_deleted")
+    private boolean isDeleted;
+    
     @Column(name = "created_date")
     private Date createdDate;
     
@@ -38,7 +41,6 @@ public class Cart {
     @OneToMany(mappedBy = "cart", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<CartDetail> cartsDetails;
     
-    @JsonIgnore
-    @OneToMany(mappedBy = "cart", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Order> orders;
+    @OneToOne(mappedBy = "cart", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Order order;
 }

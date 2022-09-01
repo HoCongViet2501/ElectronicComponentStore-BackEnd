@@ -21,6 +21,10 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
+    private String payment;
+    
+    private int quantity;
+    
     @Column(name = "total_money")
     private double totalMoney;
     
@@ -30,15 +34,8 @@ public class Order {
     @Column(name = "updated_date")
     private Date updatedDate;
     
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
-    
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "cart_id")
     private Cart cart;
     
-    @JsonIgnore
-    @OneToMany(mappedBy = "order", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<OrderDetail> orderDetails;
 }

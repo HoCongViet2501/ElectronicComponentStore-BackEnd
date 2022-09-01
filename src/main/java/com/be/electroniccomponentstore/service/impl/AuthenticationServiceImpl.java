@@ -34,7 +34,6 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         try {
             Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
             String role = authentication.getAuthorities().iterator().next().getAuthority();
-            System.err.println(role);
             String token = jwtProvider.createToken(username, String.valueOf(role));
             return new LoginResponse(username, password, role, token);
         } catch (AuthenticationException e) {
