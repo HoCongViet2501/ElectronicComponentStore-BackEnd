@@ -28,6 +28,7 @@ public class Product {
     
     private double price;
     
+    @Enumerated(EnumType.STRING)
     private Status status;
     
     @Column(name = "created_date")

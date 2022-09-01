@@ -2,17 +2,15 @@ package com.be.electroniccomponentstore.security;
 
 import com.be.electroniccomponentstore.model.entity.Account;
 import com.be.electroniccomponentstore.repository.AccountRepository;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-@Service("userDetailServiceImpl")
+@Service("userDetailsServiceImpl")
 @RequiredArgsConstructor
-public class UserDetailServiceImpl implements UserDetailsService {
+public class UserDetailsServiceImpl implements UserDetailsService {
 
     private final AccountRepository accountRepository;
 

@@ -24,6 +24,7 @@ public class Account {
     
     private String password;
     
+    @Enumerated(value = EnumType.STRING)
     private Role role;
     
     @Column(name = "created_date")
@@ -32,6 +33,6 @@ public class Account {
     @Column(name = "updated_date")
     private Date updatedDate;
     
-    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "account")
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "account")
     private User user;
 }
