@@ -1,5 +1,6 @@
 package com.be.electroniccomponentstore.model.entity;
 
+import com.be.electroniccomponentstore.model.enums.Status;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -27,7 +28,7 @@ public class Product {
     
     private double price;
     
-    private boolean status;
+    private Status status;
     
     @Column(name = "created_date")
     private Date createdDate;

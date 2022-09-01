@@ -20,8 +20,8 @@ import java.util.Base64;
 import java.util.Date;
 
 
-@RequiredArgsConstructor
 @Component
+@RequiredArgsConstructor
 public class JwtProvider {
     @Qualifier("userDetailsServiceImpl")
     @Lazy
@@ -69,11 +69,11 @@ public class JwtProvider {
     }
     
     public Authentication getAuthentication(String token) {
-        UserDetails userDetails = this.userDetailsService.loadUserByUsername(getEmailByToken(token));
+        UserDetails userDetails = this.userDetailsService.loadUserByUsername(getUsernameByToken(token));
         return new UsernamePasswordAuthenticationToken(userDetails, "", userDetails.getAuthorities());
     }
     
-    public String getEmailByToken(String token) {
+    public String getUsernameByToken(String token) {
         return Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody().getSubject();
     }
     
