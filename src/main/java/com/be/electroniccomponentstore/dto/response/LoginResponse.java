@@ -7,14 +7,12 @@ import lombok.RequiredArgsConstructor;
 @Data
 @RequiredArgsConstructor
 @AllArgsConstructor
-public class AccountResponse {
-    private Long id;
-    
+public class LoginResponse  {
     private String username;
     
     private String password;
     
     private String role;
     
+    private String token;
 }
-
