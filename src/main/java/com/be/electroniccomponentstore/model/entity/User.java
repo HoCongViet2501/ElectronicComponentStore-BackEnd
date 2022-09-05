@@ -35,7 +35,5 @@ public class User {
     @JoinColumn(name = "account_id")
     private Account account;
     
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Cart> carts;
     
 }

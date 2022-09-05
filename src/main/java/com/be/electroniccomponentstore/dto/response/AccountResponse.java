@@ -1,6 +1,5 @@
 package com.be.electroniccomponentstore.dto.response;
 
-import com.be.electroniccomponentstore.model.enums.Role;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
@@ -8,7 +7,7 @@ import lombok.RequiredArgsConstructor;
 @Data
 @RequiredArgsConstructor
 @AllArgsConstructor
-public class LoginResponse {
+public class AccountResponse {
     private String username;
     
     private String password;

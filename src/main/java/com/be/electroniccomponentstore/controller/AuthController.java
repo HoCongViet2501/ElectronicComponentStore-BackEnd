@@ -1,7 +1,7 @@
 package com.be.electroniccomponentstore.controller;
 
 import com.be.electroniccomponentstore.dto.request.LoginRequest;
-import com.be.electroniccomponentstore.dto.response.LoginResponse;
+import com.be.electroniccomponentstore.dto.response.AccountResponse;
 import com.be.electroniccomponentstore.service.AuthenticationService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -37,7 +37,7 @@ public class AuthController {
     })
     public ResponseEntity<Object> login(@RequestBody @Valid LoginRequest loginRequest) {
         String password = loginRequest.getPassword();
-        LoginResponse loginResponse = this.authenticationService.login(loginRequest.getUsername(), password);
+        AccountResponse loginResponse = this.authenticationService.login(loginRequest.getUsername(), password);
         loginResponse.setPassword(passwordEncoder.encode(password));
         return ResponseEntity.ok().body(loginResponse);
     }

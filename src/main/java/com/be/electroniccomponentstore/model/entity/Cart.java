@@ -34,8 +34,8 @@ public class Cart {
     private Date updatedDate;
     
     @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+    @JoinColumn(name = "account_id")
+    private Account account;
     
     @JsonIgnore
     @OneToMany(mappedBy = "cart", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
