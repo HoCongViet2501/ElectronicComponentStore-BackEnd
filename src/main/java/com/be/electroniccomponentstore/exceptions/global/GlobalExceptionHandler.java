@@ -1,6 +1,7 @@
 package com.be.electroniccomponentstore.exceptions.global;
 
 import com.be.electroniccomponentstore.dto.response.ErrorResponse;
+import com.be.electroniccomponentstore.exceptions.ForbiddenException;
 import com.be.electroniccomponentstore.exceptions.ResourceNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +22,12 @@ public class GlobalExceptionHandler {
     
     @ExceptionHandler({ResourceNotFoundException.class})
     public ResponseEntity<Object> ResourceNotFoundHandling(ResourceNotFoundException exception, WebRequest request) {
+        ErrorResponse errorResponse = new ErrorResponse(new Date(), exception.getMessage(), request.getDescription(false));
+        return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
+    }
+    
+    @ExceptionHandler({ForbiddenException.class})
+    public ResponseEntity<Object> ForbiddenExceptionHandling(ForbiddenException exception, WebRequest request) {
         ErrorResponse errorResponse = new ErrorResponse(new Date(), exception.getMessage(), request.getDescription(false));
         return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
     }

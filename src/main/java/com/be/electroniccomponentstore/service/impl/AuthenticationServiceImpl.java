@@ -3,7 +3,7 @@ package com.be.electroniccomponentstore.service.impl;
 import com.be.electroniccomponentstore.dto.request.AccountRequest;
 import com.be.electroniccomponentstore.dto.response.AccountResponse;
 import com.be.electroniccomponentstore.dto.response.LoginResponse;
-import com.be.electroniccomponentstore.exceptions.JwtAuthenticationException;
+import com.be.electroniccomponentstore.exceptions.ForbiddenException;
 import com.be.electroniccomponentstore.mapping.MapData;
 import com.be.electroniccomponentstore.model.entity.Account;
 import com.be.electroniccomponentstore.model.enums.Role;
@@ -51,7 +51,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
             return new LoginResponse(username, password, role, token);
         } catch (AuthenticationException e) {
             e.printStackTrace();
-            throw new JwtAuthenticationException("username or password is incorrect!");
+            throw new ForbiddenException("username or password is incorrect!");
         }
     }
     

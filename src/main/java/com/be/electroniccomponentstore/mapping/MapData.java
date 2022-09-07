@@ -20,7 +20,7 @@ public class MapData {
         return modelMapper.map(data, type);
     }
     
-    public static <D, T> List<D> mapList(List<D> typeList, Class<D> outClass) {
+    public static <D, T> List<D> mapList(List<T> typeList, Class<D> outClass) {
         return typeList.stream().map(entity -> mapOne(entity, outClass)).collect(Collectors.toList());
     }
 }

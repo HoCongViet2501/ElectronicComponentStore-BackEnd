@@ -1,6 +1,8 @@
 package com.be.electroniccomponentstore.model.entity;
 
+import com.be.electroniccomponentstore.dto.request.BrandRequest;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,6 +15,7 @@ import java.util.List;
 @Table(name = "brands")
 @Getter
 @Setter
+@AllArgsConstructor
 @NoArgsConstructor
 public class Brand {
     @Id
@@ -28,12 +31,15 @@ public class Brand {
     @OneToMany(mappedBy = "brand", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Product> products;
     
-    public Brand(Long id, String name, String description, String phoneNumber, String address) {
-        this.id = id;
+    public Brand( String name, String description, String phoneNumber, String address) {
         this.name = name;
         this.description = description;
         this.phoneNumber = phoneNumber;
         this.address = address;
+    }
+    
+    public static Brand buildFromRequest(BrandRequest request) {
+        return new Brand(request.getName(),request.getDescription(), request.getPhoneNumber(), request.getAddress());
     }
     
 }
