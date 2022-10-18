@@ -6,6 +6,6 @@ import org.apache.maven.InternalErrorException;
 import org.springframework.web.multipart.MultipartFile;
 
 public interface ImageService {
-    ImageDTO upload(MultipartFile multipartFile, Product product) throws InternalErrorException;
+    ImageDTO upload(MultipartFile multipartFile, Long productId) throws InternalErrorException;
     
 }
