@@ -20,14 +20,13 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.net.URLEncoder;
+import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
-
 import static java.net.URLEncoder.encode;
 
 @Service
@@ -75,7 +74,7 @@ public class ImageServiceImpl implements ImageService {
                 .fromStream(Files.newInputStream(Paths.get("src/main/resources/static/credentials.json")));
         Storage storage = StorageOptions.newBuilder().setCredentials(credentials).build().getService();
         storage.create(blobInfo, Files.readAllBytes(file.toPath()));
-        return String.format(DOWNLOAD_URL, encode(fileName, StandardCharsets.UTF_8), encode(fileName, StandardCharsets.UTF_8));
+        return String.format(DOWNLOAD_URL, encode(fileName, StandardCharsets.UTF_8.name()), encode(fileName, StandardCharsets.UTF_8.name()));
     }
     
     private File convertToFile(MultipartFile multipartFile, String fileName) throws InternalErrorException {
